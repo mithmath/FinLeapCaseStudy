@@ -1,0 +1,42 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: WeatherMap
+  description: |
+    WeatherMap used to find todays weather forcast
+    Find source code of this API [here](https://github.com)
+host: localhost:8080
+basePath: /weathermap//wethertoday
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /{city}:
+    get:
+      summary: Get Today's average weather report
+      description: |
+        Weather report.
+      parameters:
+        - in: path
+          name: city
+          description: Name of the city
+          required: true
+          type: string
+      responses:
+        200:
+          description:  Get Weather
+          schema:
+            title: Get Weather
+            type: object
+            items:
+              $ref: '#/definitions/weather'
+definitions:
+  weather:
+    type: object
+    properties:
+      city:
+        type: string      
